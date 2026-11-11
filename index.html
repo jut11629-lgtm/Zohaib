@@ -3,136 +3,230 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Happy Birthday Zohaib 💜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Zohaib</title>
 <style>
 *{box-sizing:border-box}
 body{
- margin:0;min-height:100vh;text-align:center;
- font-family:Arial,sans-serif;color:white;
- background:radial-gradient(circle at top,#7025a5,#24103f 60%,#09051c);
+ margin:0;min-height:100vh;
+ font-family:Georgia,serif;color:#71304f;
+ background:radial-gradient(circle at 15% 10%,#fff,#ffe5f1 40%,#ffc8e0);
+ overflow-x:hidden
 }
-main{max-width:650px;margin:auto;padding:25px 18px}
-h1{color:#f0c5ff;text-shadow:0 0 15px #d36aff;font-size:38px}
-h2{color:#e6b5ff}
-p{font-size:18px;line-height:1.7}
+#sparkles{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.float{position:absolute;bottom:-40px;animation:rise linear infinite;opacity:.7}
+@keyframes rise{to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+main{position:relative;max-width:760px;margin:auto;padding:24px 16px;min-height:100vh;display:flex;align-items:center;justify-content:center}
 .panel{
- margin:22px auto;padding:25px 18px;
- border:1px solid #d18aff;border-radius:25px;
- background:#ffffff10;box-shadow:0 0 25px #b64dff55;
+ width:100%;background:#ffffffdf;border:1px solid white;
+ box-shadow:0 18px 55px #b83c7850;border-radius:28px;
+ padding:clamp(22px,5vw,44px);text-align:center
 }
-button{
- border:0;border-radius:30px;padding:14px 25px;
- margin:12px;background:linear-gradient(120deg,#a93bea,#ed62cf);
- color:white;font-size:17px;font-weight:bold;cursor:pointer;
- box-shadow:0 0 15px #bc55ff;
+h1{font-size:clamp(2rem,7vw,3.6rem);color:#d93683;text-shadow:0 3px #ffd5e8}
+h2{color:#d93683}
+p{font-size:1.15rem;line-height:1.65}
+.small{font-size:.95rem;color:#9b6680}
+.envelope{font-size:100px;animation:bob 2s infinite}
+@keyframes bob{50%{transform:translateY(-9px)}}
+button,.filelabel{
+ border:0;border-radius:999px;padding:13px 24px;margin:8px 5px;
+ background:linear-gradient(135deg,#ff78b4,#df3987);
+ color:white;font-size:1rem;font-weight:bold;cursor:pointer;
+ box-shadow:0 7px 18px #d9368350;display:inline-block
 }
-button:active{transform:scale(.96)}
-.step{display:none;animation:appear .8s ease}
-#one{display:block}
-@keyframes appear{
- from{opacity:0;transform:translateY(20px)}
- to{opacity:1;transform:translateY(0)}
-}
-.envelope{font-size:100px;cursor:pointer;filter:drop-shadow(0 0 15px #d16aff)}
+.hidden{display:none!important}
 .photo{
- width:220px;height:220px;margin:20px auto;
- border:4px solid #e1a4ff;border-radius:25px;overflow:hidden;
- background:#281343;display:flex;align-items:center;
- justify-content:center;color:#f2caff;
- box-shadow:0 0 22px #b64dff;
+ max-width:100%;max-height:360px;object-fit:contain;
+ border-radius:20px;margin:18px auto;border:6px solid white;
+ box-shadow:0 8px 25px #b83c7840;display:block
 }
-.photo img{width:100%;height:100%;object-fit:cover}
-.cake{font-size:100px;transition:.5s}
-.cut{transform:rotate(-12deg) scale(1.1)}
-.small{font-size:14px;color:#dcb1ff}
+#photoInput{display:none}
+.cake{font-size:110px;animation:bob 2s infinite}
+.candles{font-size:40px}
+.progress{height:7px;background:#ffe0ed;border-radius:10px;margin:0 auto 24px;max-width:300px;overflow:hidden}
+#bar{height:100%;background:#ff5fa2;transition:width .4s}
+.hearts{font-size:27px;letter-spacing:8px}
+.message{background:#fff5fa;border:1px dashed #f08ab8;padding:20px;border-radius:18px;margin:18px 0}
+footer{font-size:.8rem;color:#b17a94;margin-top:22px}
 </style>
 </head>
 <body>
+<div id="sparkles"></div>
 <main>
- <div style="font-size:38px;margin-top:15px">💜 ✨ 💜</div>
-
- <section class="step" id="one">
-  <div class="panel">
-   <h1>A Little Surprise</h1>
-   <p>Someone has something special waiting for you...</p>
-   <div class="envelope" onclick="showStep(2)">💌</div>
-   <p>Tap to open your letter</p>
-   <button onclick="showStep(2)">Open Envelope 💌</button>
-  </div>
- </section>
-
- <section class="step" id="two">
-  <div class="panel">
-   <h1>Dear Zohaib ❤️</h1>
-   <p>Today is all about you! A special day
-   deserves a special surprise.</p>
-   <p>May your life always be filled with happiness,
-   love and beautiful moments.</p>
-   <button onclick="showStep(3)">Continue 💜</button>
-  </div>
- </section>
-
- <section class="step" id="three">
-  <div class="panel">
-   <h1>A Special Memory ✨</h1>
-   <div class="photo">
-    <img src="photo.jpg" alt="Your picture"
-    onerror="this.style.display='none';this.parentElement.innerHTML='📷 Your Photo Here'">
-   </div>
-   <p>This moment is just for you!</p>
-   <button onclick="startSurprise()">Open Surprise 🎁</button>
-  </div>
- </section>
-
- <section class="step" id="four">
-  <div class="panel">
-   <div style="font-size:65px">🎉🎊💜</div>
-   <h1>HAPPY BIRTHDAY!</h1>
-   <h2>Dear Zohaib ❤️</h2>
-   <p>May every new day bring happiness,
-   success and countless reasons to smile.</p>
-   <p>Keep shining and keep achieving your dreams!</p>
-   <button onclick="showStep(5)">Next: Cake Time 🎂</button>
-  </div>
- </section>
-
- <section class="step" id="five">
-  <div class="panel">
-   <h1>Make A Wish! 🎂</h1>
-   <div class="cake" id="cake">🎂</div>
-   <p id="cakeText">It's your special day!</p>
-   <button onclick="cutCake()">Cut The Cake 🔪</button>
-   <div id="final" style="display:none">
-    <h1>Lots of Love! 💜</h1>
-    <p>Stay blessed and keep smiling always.</p>
-    <div style="font-size:40px">🎈🎁🎊</div>
-   </div>
-  </div>
- </section>
-
- <p class="small">Made with love ❤️ Just for you</p>
+<section class="panel">
+<div class="progress"><div id="bar"></div></div>
+<div id="screen"></div>
+<footer>Made with friendship & birthday wishes 💗</footer>
+</section>
 </main>
 
 <script>
-function showStep(n){
- document.querySelectorAll(".step").forEach(s=>s.style.display="none");
- document.getElementById(["","one","two","three","four","five"][n]).style.display="block";
- window.scrollTo(0,0);
+/* Photo gets embedded in the final downloaded website */
+const EMBEDDED_PHOTO = "";
+const BUILD_MODE = true;
+
+const screens = [
+`<div class="envelope">💌</div>
+<p class="small">A little birthday surprise is waiting for you...</p>
+<h1>For Zohaib</h1>
+<p>Someone special deserves a special birthday surprise!</p>
+<button onclick="go(1)">Open Your Letter 💌</button>`,
+
+`<div class="hearts">💗 💖 💗</div>
+<h1>Happy Birthday, Zohaib!</h1>
+<p>Wishing you a day full of smiles, laughter, good memories and all the happiness you deserve.</p>
+<p>May this new year of your life bring you success, peace and wonderful moments.</p>
+<button onclick="go(2)">Next Surprise ✨</button>`,
+
+`<h2>A Birthday Memory 📸</h2>
+<p>One special memory to keep forever.</p>
+<div id="photoArea"></div>
+<div id="uploadTools">
+<label class="filelabel" for="photoInput">Choose Your Photo</label>
+<input id="photoInput" type="file" accept="image/*">
+<p class="small">Choose your photo once, then download the finished website. Your final website will not show this upload option again.</p>
+<button onclick="downloadFinalSite()">Download Final Website ⬇</button>
+</div>
+<button onclick="go(3)">Continue 🎁</button>`,
+
+`<h1>Make a Wish! 🎂</h1>
+<div class="cake">🎂</div>
+<div class="candles">🕯️ 🕯️ 🕯️</div>
+<p>It's your special day, Zohaib! Make a big birthday wish.</p>
+<button onclick="blow()">Blow the Candles ✨</button>
+<div id="cakeDone" class="hidden">
+<h2>Yay! 🎉</h2>
+<p>May all your good wishes come true!</p>
+<button onclick="go(4)">One Last Thing 💗</button>
+</div>`,
+
+`<h2>A Message for You 💌</h2>
+<div class="message">
+<p>Happy Birthday, Zohaib! May your life always be filled with happiness, success, good health and beautiful moments.</p>
+<p>Keep smiling, keep shining, and enjoy your day!</p>
+<p>Wishing you many more amazing years ahead. 🎉</p>
+</div>
+<div class="hearts">💗 💖 💗</div>
+<button onclick="go(0)">Replay Surprise ↻</button>`
+];
+
+let current=0;
+let selectedData=EMBEDDED_PHOTO;
+
+function go(n){
+ current=n;
+ render();
 }
-function startSurprise(){
- showStep(4);
- document.getElementById("music").src=
- "https://www.youtube.com/embed/CF1vezYi7rA?autoplay=1";
+
+function render(){
+ document.getElementById('screen').innerHTML=screens[current];
+ document.getElementById('bar').style.width=((current+1)/screens.length*100)+'%';
+
+ if(current===2){
+  const area=document.getElementById('photoArea');
+
+  if(selectedData){
+   area.innerHTML='<img class="photo" alt="Birthday memory" src="'+selectedData+'">';
+  }else{
+   area.innerHTML='<div class="photo" style="min-height:150px;display:grid;place-items:center;background:#fff0f7">📷 Your photo will appear here</div>';
+  }
+
+  const input=document.getElementById('photoInput');
+
+  if(BUILD_MODE && input){
+   input.addEventListener('change',function(e){
+    const f=e.target.files && e.target.files[0];
+    if(!f)return;
+
+    const reader=new FileReader();
+    reader.onload=function(ev){
+     selectedData=ev.target.result;
+     document.getElementById('photoArea').innerHTML=
+     '<img class="photo" alt="Birthday memory" src="'+selectedData+'">';
+    };
+    reader.readAsDataURL(f);
+   });
+  }
+ }
 }
-function cutCake(){
- document.getElementById("cake").classList.add("cut");
- document.getElementById("cakeText").textContent="Happy Birthday! 🎉";
- document.getElementById("final").style.display="block";
+
+function blow(){
+ document.querySelector('.candles').textContent='✨ 🎉 ✨';
+ document.getElementById('cakeDone').classList.remove('hidden');
+ confetti();
 }
+
+function confetti(){
+ for(let i=0;i<35;i++){
+  let e=document.createElement('div');
+  e.textContent=['🎉','💗','✨','🎊'][i%4];
+  e.style.cssText=`position:fixed;left:${Math.random()*100}vw;top:-30px;font-size:24px;z-index:5;pointer-events:none;transition:transform 2.5s,opacity 2.5s`;
+  document.body.appendChild(e);
+  requestAnimationFrame(()=>{
+   e.style.transform=`translateY(${80+Math.random()*100}vh) rotate(${Math.random()*500}deg)`;
+   e.style.opacity=0;
+  });
+  setTimeout(()=>e.remove(),2600);
+ }
+}
+
+function downloadFinalSite(){
+ if(!selectedData){
+  alert('Please choose your photo first.');
+  return;
+ }
+
+ let finalHTML=document.documentElement.outerHTML;
+
+ finalHTML=finalHTML.replace(
+  'const EMBEDDED_PHOTO = "";',
+  'const EMBEDDED_PHOTO = '+JSON.stringify(selectedData)+';'
+ );
+
+ finalHTML=finalHTML.replace(
+  'const BUILD_MODE = true;',
+  'const BUILD_MODE = false;'
+ );
+
+ finalHTML=finalHTML.replace(
+  '<div id="uploadTools">\n<label class="filelabel" for="photoInput">Choose Your Photo</label>\n<input id="photoInput" type="file" accept="image/*">\n<p class="small">Choose your photo once, then download the finished website. Your final website will not show this upload option again.</p>\n<button onclick="downloadFinalSite()">Download Final Website ⬇</button>\n</div>',
+  ''
+ );
+
+ finalHTML=finalHTML.replace(
+  '<input id="photoInput" type="file" accept="image/*">',
+  ''
+ );
+
+ const blob=new Blob(
+  ['<!DOCTYPE html>\n'+finalHTML],
+  {type:'text/html;charset=utf-8'}
+ );
+
+ const a=document.createElement('a');
+ a.href=URL.createObjectURL(blob);
+ a.download='index.html';
+ document.body.appendChild(a);
+ a.click();
+ a.remove();
+
+ setTimeout(()=>URL.revokeObjectURL(a.href),3000);
+ alert('Final website downloaded! Upload this index.html to GitHub. Your photo is already saved inside it.');
+}
+
+function makeFloat(){
+ const e=document.createElement('div');
+ e.className='float';
+ e.textContent=['💗','💕','✨','🌸'][Math.floor(Math.random()*4)];
+ e.style.left=Math.random()*100+'%';
+ e.style.animationDuration=(7+Math.random()*8)+'s';
+ e.style.fontSize=(16+Math.random()*20)+'px';
+ document.getElementById('sparkles').appendChild(e);
+ setTimeout(()=>e.remove(),16000);
+}
+
+setInterval(makeFloat,650);
+render();
 </script>
-<iframe id="music" width="1" height="1"
- style="position:absolute;left:-9999px"
- allow="autoplay; encrypted-media"></iframe>
 </body>
 </html>
