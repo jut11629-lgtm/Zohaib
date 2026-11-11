@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,40 +11,42 @@
 body{
  margin:0;
  font-family:Arial,sans-serif;
- background:radial-gradient(circle at top,#42116b,#160624 65%,#05020c);
  color:white;
  text-align:center;
  min-height:100vh;
+ background:radial-gradient(circle at top,#501078,#200735 55%,#080313);
  overflow-x:hidden;
 }
 .glow{
- color:#e4a5ff;
- text-shadow:0 0 8px #c45aff,0 0 20px #a000ff,0 0 40px #8500ff;
+ color:#f0b5ff;
+ text-shadow:0 0 8px #db65ff,0 0 20px #a000ff,0 0 40px #9d00ff;
 }
-header{padding:30px 15px 10px}
+header{padding:25px 10px}
 h1{font-size:34px}
-p{line-height:1.8;color:#ead8fa}
+p{line-height:1.8;color:#eadcf5}
 .card{
- width:90%;max-width:520px;
- margin:25px auto;
- padding:30px 20px;
- border:1px solid #c56aff;
- border-radius:22px;
- background:#210c38e8;
- box-shadow:0 0 20px #9b36ff66,inset 0 0 15px #a33aff22;
+ width:91%;
+ max-width:520px;
+ margin:22px auto;
+ padding:28px 18px;
+ background:linear-gradient(145deg,#35104f,#180626);
+ border:1px solid #c65bff;
+ border-radius:23px;
+ box-shadow:0 0 25px #b42cff66,inset 0 0 15px #b42cff22;
 }
 button{
- background:linear-gradient(100deg,#9b32ff,#e04cff);
- color:white;border:0;
- padding:14px 24px;
+ padding:14px 22px;
+ margin:10px 5px;
+ border:1px solid #e6aaff;
  border-radius:30px;
- font-size:16px;
+ background:linear-gradient(110deg,#8b21ce,#e04cff);
+ color:white;
+ font-size:15px;
  font-weight:bold;
- margin:12px 5px;
  cursor:pointer;
- box-shadow:0 0 18px #bb48ff88;
+ box-shadow:0 0 18px #bd48ff77;
 }
-button:active{transform:scale(.96)}
+button:active{transform:scale(.95)}
 .page{display:none;animation:appear .8s}
 .page.active{display:block}
 @keyframes appear{
@@ -59,174 +60,187 @@ button:active{transform:scale(.96)}
 @keyframes float{
  50%{transform:translateY(-13px)}
 }
-.cake{font-size:100px;margin:20px}
 .photo{
- width:100%;max-height:260px;
+ width:85%;
+ max-width:310px;
+ height:310px;
  object-fit:cover;
- border-radius:15px;
- margin-top:15px;
- box-shadow:0 0 20px #bb54ff77;
+ border-radius:50%;
+ border:4px solid #d779ff;
+ box-shadow:0 0 25px #c43cffaa;
+ margin:20px auto;
 }
+.cake{font-size:100px;margin:20px}
 .star{
  position:fixed;
+ top:-30px;
  pointer-events:none;
- color:#e9b5ff;
- animation:fall 5s linear infinite;
- z-index:0;
+ animation:fall linear forwards;
+ z-index:10;
 }
 @keyframes fall{
- from{transform:translateY(-10vh) rotate(0)}
- to{transform:translateY(110vh) rotate(360deg)}
+ to{transform:translateY(110vh) rotate(360deg);opacity:0}
 }
-.card,.page,header{position:relative;z-index:1}
-footer{padding:30px;color:#c9a6e8}
-input{max-width:100%;margin:12px;color:white}
+.music{
+ background:#170626;
+ border:1px solid #c65bff;
+ border-radius:15px;
+ padding:15px;
+ margin:15px auto;
+}
+iframe{
+ width:100%;
+ max-width:300px;
+ height:170px;
+ border:0;
+ border-radius:12px;
+}
+footer{padding:25px;color:#dca1ff}
 </style>
 </head>
 
 <body>
 
 <header>
-<h1 class="glow">💜 Happy Birthday Zohaib 💜</h1>
-<p>A Special Surprise Is Waiting For You! ✨</p>
+<h1 class="glow">💜 Happy Birthday 💜</h1>
+<p>A Magical Surprise For Someone Special ✨</p>
 </header>
 
 <!-- PAGE 1 -->
-<section class="page active" id="page1">
+<section class="page active" id="p1">
 <div class="card">
 <div class="envelope">💌</div>
-<h2 class="glow">Hey Zohaib!</h2>
-<p>Someone has prepared a special surprise for you...</p>
+<h1 class="glow">Hey Zohaib!</h1>
+<p>Someone has prepared a magical surprise just for you!</p>
 <p>Are you ready? 🎁</p>
-<button onclick="showPage(2)">Open Your Surprise 💜</button>
+<button onclick="next(2)">Open Your Surprise 💜</button>
 </div>
 </section>
 
 <!-- PAGE 2 -->
-<section class="page" id="page2">
+<section class="page" id="p2">
 <div class="card">
 <h1 class="glow">🎉 It's Your Special Day! 🎉</h1>
-<div style="font-size:65px">🎊🎈🎊</div>
-<h2>Happy Birthday Zohaib!</h2>
+
+<img src="photo.jpg" class="photo" alt="Zohaib">
+
+<h2 class="glow">Happy Birthday Zohaib!</h2>
 <p>
-Wishing you a day full of happiness, laughter,
-beautiful memories and endless blessings.
-May every new day bring you success and joy.
+Wishing you endless happiness, beautiful memories,
+success and countless blessings.
+May all your dreams come true!
 </p>
-<p class="glow">Keep Shining, Keep Smiling! ✨</p>
-<button onclick="showPage(3)">Next Surprise ➜</button>
+<h2 class="glow">Keep Shining Like A Star! ✨</h2>
+<button onclick="next(3)">Next Surprise ➜</button>
 </div>
 </section>
 
 <!-- PAGE 3 -->
-<section class="page" id="page3">
+<section class="page" id="p3">
 <div class="card">
 <h1 class="glow">🎂 Birthday Cake 🎂</h1>
 <div class="cake" id="cake">🎂</div>
-<p id="cakeText">Make a birthday wish, Zohaib! 🌟</p>
-<button onclick="blowCandles()">Blow The Candles 🕯️</button>
-<button onclick="showPage(4)">Next ➜</button>
+<p id="cakeText">Close your eyes and make a wish, Zohaib! 🌟</p>
+<button onclick="cutCake()">Cut The Cake 🎉</button>
+<button onclick="next(4)">Next ➜</button>
 </div>
 </section>
 
 <!-- PAGE 4 -->
-<section class="page" id="page4">
+<section class="page" id="p4">
 <div class="card">
-<h1 class="glow">📸 Memory Corner</h1>
-<p>Add your favourite pictures with Zohaib here!</p>
-<input type="file" id="photos" accept="image/*" multiple>
-<div id="gallery"></div>
-<button onclick="showPage(5)">One More Surprise ➜</button>
+<h1 class="glow">🎵 Your Special Song 🎵</h1>
+<p>Aik Baat Kahoon 💜</p>
+
+<div class="music">
+<p>Enjoy your birthday song!</p>
+<button onclick="playSong()">▶ Play Song</button>
+<div id="songPlayer"></div>
+</div>
+
+<button onclick="next(5)">Next Surprise ➜</button>
 </div>
 </section>
 
 <!-- PAGE 5 -->
-<section class="page" id="page5">
+<section class="page" id="p5">
 <div class="card">
-<h1 class="glow">🎁 A Special Message</h1>
-<div style="font-size:65px">💜✨💜</div>
+<h1 class="glow">💜 A Message For You</h1>
+<div style="font-size:65px">✨💜🎁</div>
 <p>
 Dear Zohaib,<br><br>
 May your life always be filled with happiness,
-success, friendship and beautiful moments.
-May you achieve everything you work hard for.
-<br><br>
-Stay blessed and enjoy your special day!
+love, success and beautiful moments.
+May every new day bring you new opportunities
+and reasons to smile.<br><br>
+Stay blessed and never stop shining!
 </p>
-<h2 class="glow">Happy Birthday Once Again! 🥳</h2>
-<button onclick="showPage(6)">Final Surprise 💫</button>
+<h2 class="glow">You Are Special! 💜</h2>
+<button onclick="next(6)">Final Surprise 🎁</button>
 </div>
 </section>
 
 <!-- PAGE 6 -->
-<section class="page" id="page6">
+<section class="page" id="p6">
 <div class="card">
-<div style="font-size:80px">👑</div>
+<div style="font-size:85px">👑</div>
 <h1 class="glow">You're Awesome, Zohaib!</h1>
-<p>Never stop smiling. Your best moments are still ahead! 💜</p>
-<h2>🎉 HAPPY BIRTHDAY 🎉</h2>
-<button onclick="showPage(1)">Replay Surprise 🔄</button>
+<p>Your best moments are still ahead. Keep smiling!</p>
+<h1 class="glow">HAPPY BIRTHDAY! 🎉</h1>
+<p>Made with lots of wishes 💜</p>
+<button onclick="next(1)">Replay Surprise 🔄</button>
 </div>
 </section>
 
-<footer>Made with 💜 for Zohaib</footer>
+<footer>
+Made with 💜 for Zohaib
+<br>✨ Stay Amazing ✨
+</footer>
 
 <script>
-function showPage(number){
+function next(n){
  document.querySelectorAll('.page').forEach(p=>{
   p.classList.remove('active');
  });
- document.getElementById('page'+number).classList.add('active');
+ document.getElementById('p'+n).classList.add('active');
  window.scrollTo({top:0,behavior:'smooth'});
+ celebrate();
 }
 
-function blowCandles(){
- document.getElementById('cake').innerText='🎂✨';
+function cutCake(){
+ document.getElementById('cake').innerText='🍰✨';
  document.getElementById('cakeText').innerText=
  'Wish made! May all your dreams come true, Zohaib! 💜';
- confetti();
+ celebrate();
 }
 
-function confetti(){
- for(let i=0;i<45;i++){
+function celebrate(){
+ for(let i=0;i<40;i++){
   let s=document.createElement('div');
-  s.innerText=['💜','✨','🎉','💫'][Math.floor(Math.random()*4)];
-  s.style.position='fixed';
+  s.className='star';
+  s.innerText=['✨','💜','⭐','🎉','🌟'][Math.floor(Math.random()*5)];
   s.style.left=Math.random()*100+'vw';
-  s.style.top='-20px';
   s.style.fontSize=(15+Math.random()*20)+'px';
-  s.style.zIndex='10';
-  s.style.transition='transform 3s linear,opacity 3s';
+  s.style.animationDuration=(2+Math.random()*3)+'s';
   document.body.appendChild(s);
-  setTimeout(()=>{
-   s.style.transform='translateY(110vh) rotate(500deg)';
-   s.style.opacity='0';
-  },50);
-  setTimeout(()=>s.remove(),3200);
+  setTimeout(()=>s.remove(),5500);
  }
 }
 
-document.getElementById('photos').addEventListener('change',function(e){
- const gallery=document.getElementById('gallery');
- gallery.innerHTML='';
- [...e.target.files].forEach(file=>{
-  const img=document.createElement('img');
-  img.className='photo';
-  img.src=URL.createObjectURL(file);
-  gallery.appendChild(img);
- });
-});
+function playSong(){
+ document.getElementById('songPlayer').innerHTML=
+ '<iframe src="https://www.youtube.com/embed/CF1vezYi7rA?autoplay=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+}
 
 setInterval(()=>{
- let star=document.createElement('div');
- star.className='star';
- star.innerText=['✦','✨','💜','★'][Math.floor(Math.random()*4)];
- star.style.left=Math.random()*100+'vw';
- star.style.fontSize=(12+Math.random()*20)+'px';
- star.style.animationDuration=(3+Math.random()*5)+'s';
- document.body.appendChild(star);
- setTimeout(()=>star.remove(),8000);
-},400);
+ let s=document.createElement('div');
+ s.className='star';
+ s.innerText=['✦','✨','⭐','💜'][Math.floor(Math.random()*4)];
+ s.style.left=Math.random()*100+'vw';
+ s.style.animationDuration=(4+Math.random()*4)+'s';
+ document.body.appendChild(s);
+ setTimeout(()=>s.remove(),8500);
+},700);
 </script>
 
 </body>
