@@ -5,243 +5,98 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday Zohaib 💜</title>
-
 <style>
 *{box-sizing:border-box}
 body{
- margin:0;
- font-family:Arial,sans-serif;
- color:white;
- text-align:center;
- min-height:100vh;
- background:radial-gradient(circle at top,#501078,#200735 55%,#080313);
- overflow-x:hidden;
+ margin:0;min-height:100vh;text-align:center;
+ font-family:Arial,sans-serif;color:#fff;
+ background:radial-gradient(circle at top,#51208c,#190d36 55%,#09051c);
+ overflow-x:hidden
 }
-.glow{
- color:#f0b5ff;
- text-shadow:0 0 8px #db65ff,0 0 20px #a000ff,0 0 40px #9d00ff;
-}
-header{padding:25px 10px}
-h1{font-size:34px}
-p{line-height:1.8;color:#eadcf5}
+.container{max-width:750px;margin:auto;padding:25px 18px}
+.stars{font-size:40px;letter-spacing:12px;margin-top:25px}
+h1{font-size:clamp(34px,8vw,55px);color:#f1c5ff;
+ text-shadow:0 0 12px #d36aff,0 0 28px #a83dff}
+h2{color:#e5b5ff}
+p{font-size:18px;line-height:1.7}
 .card{
- width:91%;
- max-width:520px;
- margin:22px auto;
- padding:28px 18px;
- background:linear-gradient(145deg,#35104f,#180626);
- border:1px solid #c65bff;
- border-radius:23px;
- box-shadow:0 0 25px #b42cff66,inset 0 0 15px #b42cff22;
-}
-button{
- padding:14px 22px;
- margin:10px 5px;
- border:1px solid #e6aaff;
- border-radius:30px;
- background:linear-gradient(110deg,#8b21ce,#e04cff);
- color:white;
- font-size:15px;
- font-weight:bold;
- cursor:pointer;
- box-shadow:0 0 18px #bd48ff77;
-}
-button:active{transform:scale(.95)}
-.page{display:none;animation:appear .8s}
-.page.active{display:block}
-@keyframes appear{
- from{opacity:0;transform:translateY(20px)}
- to{opacity:1;transform:translateY(0)}
-}
-.envelope{
- font-size:100px;
- animation:float 2s infinite ease-in-out;
-}
-@keyframes float{
- 50%{transform:translateY(-13px)}
+ margin:22px auto;padding:25px;border-radius:25px;
+ background:#ffffff12;border:1px solid #d18aff;
+ box-shadow:0 0 25px #a83dff66
 }
 .photo{
- width:85%;
- max-width:310px;
- height:310px;
- object-fit:cover;
- border-radius:50%;
- border:4px solid #d779ff;
- box-shadow:0 0 25px #c43cffaa;
- margin:20px auto;
+ width:220px;height:220px;margin:18px auto;
+ border-radius:25px;overflow:hidden;
+ border:4px solid #e1a4ff;
+ box-shadow:0 0 25px #b64dff;
+ background:#281343;display:flex;align-items:center;
+ justify-content:center;color:#f2caff
 }
-.cake{font-size:100px;margin:20px}
-.star{
- position:fixed;
- top:-30px;
- pointer-events:none;
- animation:fall linear forwards;
- z-index:10;
+.photo img{width:100%;height:100%;object-fit:cover}
+button{
+ padding:15px 28px;border:0;border-radius:30px;
+ color:white;background:linear-gradient(120deg,#9b35df,#ed62cf);
+ font-size:17px;font-weight:bold;cursor:pointer;
+ box-shadow:0 0 20px #c64bff;margin:12px
 }
-@keyframes fall{
- to{transform:translateY(110vh) rotate(360deg);opacity:0}
+#surprise{display:none;animation:appear 1s ease}
+@keyframes appear{
+ from{opacity:0;transform:scale(.9)}
+ to{opacity:1;transform:scale(1)}
 }
-.music{
- background:#170626;
- border:1px solid #c65bff;
- border-radius:15px;
- padding:15px;
- margin:15px auto;
-}
-iframe{
- width:100%;
- max-width:300px;
- height:170px;
- border:0;
- border-radius:12px;
-}
-footer{padding:25px;color:#dca1ff}
+.gift{font-size:60px;animation:float 1.5s infinite alternate}
+@keyframes float{to{transform:translateY(-12px)}}
+footer{padding:25px;color:#dcb1ff}
 </style>
 </head>
-
 <body>
+<div class="container">
+ <div class="stars">✨ 💜 ✨</div>
+ <h1>Happy Birthday Zohaib</h1>
+ <h2>A Surprise Made Just For You</h2>
 
-<header>
-<h1 class="glow">💜 Happy Birthday 💜</h1>
-<p>A Magical Surprise For Someone Special ✨</p>
-</header>
+ <div class="card">
+  <div class="photo">
+   <img src="photo.jpg" alt="Zohaib Picture"
+   onerror="this.style.display='none';this.parentElement.innerHTML='Your Photo Here 📷'">
+  </div>
+  <p>A special day deserves a special surprise! 💫</p>
+  <button onclick="openSurprise()">🎁 Open Surprise</button>
+ </div>
 
-<!-- PAGE 1 -->
-<section class="page active" id="p1">
-<div class="card">
-<div class="envelope">💌</div>
-<h1 class="glow">Hey Zohaib!</h1>
-<p>Someone has prepared a magical surprise just for you!</p>
-<p>Are you ready? 🎁</p>
-<button onclick="next(2)">Open Your Surprise 💜</button>
+ <div id="surprise">
+  <div class="gift">🎂🎉💜</div>
+  <h1>Surprise!</h1>
+  <h2>Happy Birthday Zohaib ❤️</h2>
+  <div class="card">
+   <p>
+    May your life always be filled with happiness,
+    love and beautiful moments.
+   </p>
+   <p>
+    May every new day bring new opportunities,
+    success and countless reasons to smile.
+   </p>
+   <h2>Stay Blessed & Keep Shining! ✨</h2>
+  </div>
+  <div style="font-size:35px">💜 🎊 🎈 💜</div>
+ </div>
+ <footer>Designed with Love ❤️</footer>
 </div>
-</section>
-
-<!-- PAGE 2 -->
-<section class="page" id="p2">
-<div class="card">
-<h1 class="glow">🎉 It's Your Special Day! 🎉</h1>
-
-<img src="photo.jpg" class="photo" alt="Zohaib">
-
-<h2 class="glow">Happy Birthday Zohaib!</h2>
-<p>
-Wishing you endless happiness, beautiful memories,
-success and countless blessings.
-May all your dreams come true!
-</p>
-<h2 class="glow">Keep Shining Like A Star! ✨</h2>
-<button onclick="next(3)">Next Surprise ➜</button>
-</div>
-</section>
-
-<!-- PAGE 3 -->
-<section class="page" id="p3">
-<div class="card">
-<h1 class="glow">🎂 Birthday Cake 🎂</h1>
-<div class="cake" id="cake">🎂</div>
-<p id="cakeText">Close your eyes and make a wish, Zohaib! 🌟</p>
-<button onclick="cutCake()">Cut The Cake 🎉</button>
-<button onclick="next(4)">Next ➜</button>
-</div>
-</section>
-
-<!-- PAGE 4 -->
-<section class="page" id="p4">
-<div class="card">
-<h1 class="glow">🎵 Your Special Song 🎵</h1>
-<p>Aik Baat Kahoon 💜</p>
-
-<div class="music">
-<p>Enjoy your birthday song!</p>
-<button onclick="playSong()">▶ Play Song</button>
-<div id="songPlayer"></div>
-</div>
-
-<button onclick="next(5)">Next Surprise ➜</button>
-</div>
-</section>
-
-<!-- PAGE 5 -->
-<section class="page" id="p5">
-<div class="card">
-<h1 class="glow">💜 A Message For You</h1>
-<div style="font-size:65px">✨💜🎁</div>
-<p>
-Dear Zohaib,<br><br>
-May your life always be filled with happiness,
-love, success and beautiful moments.
-May every new day bring you new opportunities
-and reasons to smile.<br><br>
-Stay blessed and never stop shining!
-</p>
-<h2 class="glow">You Are Special! 💜</h2>
-<button onclick="next(6)">Final Surprise 🎁</button>
-</div>
-</section>
-
-<!-- PAGE 6 -->
-<section class="page" id="p6">
-<div class="card">
-<div style="font-size:85px">👑</div>
-<h1 class="glow">You're Awesome, Zohaib!</h1>
-<p>Your best moments are still ahead. Keep smiling!</p>
-<h1 class="glow">HAPPY BIRTHDAY! 🎉</h1>
-<p>Made with lots of wishes 💜</p>
-<button onclick="next(1)">Replay Surprise 🔄</button>
-</div>
-</section>
-
-<footer>
-Made with 💜 for Zohaib
-<br>✨ Stay Amazing ✨
-</footer>
 
 <script>
-function next(n){
- document.querySelectorAll('.page').forEach(p=>{
-  p.classList.remove('active');
- });
- document.getElementById('p'+n).classList.add('active');
- window.scrollTo({top:0,behavior:'smooth'});
- celebrate();
+function openSurprise(){
+ document.getElementById("surprise").style.display="block";
+ document.querySelector("button").style.display="none";
+ const music=document.createElement("iframe");
+ music.width="1";music.height="1";
+ music.style.position="absolute";
+ music.style.left="-9999px";
+ music.src="https://www.youtube.com/embed/CF1vezYi7rA?autoplay=1";
+ music.allow="autoplay; encrypted-media";
+ music.title="Birthday Song";
+ document.body.appendChild(music);
 }
-
-function cutCake(){
- document.getElementById('cake').innerText='🍰✨';
- document.getElementById('cakeText').innerText=
- 'Wish made! May all your dreams come true, Zohaib! 💜';
- celebrate();
-}
-
-function celebrate(){
- for(let i=0;i<40;i++){
-  let s=document.createElement('div');
-  s.className='star';
-  s.innerText=['✨','💜','⭐','🎉','🌟'][Math.floor(Math.random()*5)];
-  s.style.left=Math.random()*100+'vw';
-  s.style.fontSize=(15+Math.random()*20)+'px';
-  s.style.animationDuration=(2+Math.random()*3)+'s';
-  document.body.appendChild(s);
-  setTimeout(()=>s.remove(),5500);
- }
-}
-
-function playSong(){
- document.getElementById('songPlayer').innerHTML=
- '<iframe src="https://www.youtube.com/embed/CF1vezYi7rA?autoplay=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
-}
-
-setInterval(()=>{
- let s=document.createElement('div');
- s.className='star';
- s.innerText=['✦','✨','⭐','💜'][Math.floor(Math.random()*4)];
- s.style.left=Math.random()*100+'vw';
- s.style.animationDuration=(4+Math.random()*4)+'s';
- document.body.appendChild(s);
- setTimeout(()=>s.remove(),8500);
-},700);
 </script>
-
 </body>
 </html>
