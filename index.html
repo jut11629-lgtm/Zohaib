@@ -7,215 +7,123 @@
 <title>Happy Birthday Zohaib</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;min-height:100vh;font-family:Georgia,serif;color:#71304f;background:radial-gradient(circle at 15% 10%,#fff,#ffe5f1 40%,#ffc8e0);overflow-x:hidden}
-#sparkles{position:fixed;inset:0;pointer-events:none;overflow:hidden}
-.float{position:absolute;bottom:-40px;animation:rise linear infinite;opacity:.7}
-@keyframes rise{to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
-main{position:relative;max-width:760px;margin:auto;padding:24px 16px;min-height:100vh;display:flex;align-items:center;justify-content:center}
-.panel{width:100%;background:#ffffffdf;border:1px solid white;box-shadow:0 18px 55px #b83c7850;border-radius:28px;padding:clamp(22px,5vw,44px);text-align:center}
-h1{font-size:clamp(2rem,7vw,3.6rem);color:#d93683;text-shadow:0 3px #ffd5e8}
-h2{color:#d93683}
-p{font-size:1.15rem;line-height:1.65}
-.small{font-size:.95rem;color:#9b6680}
-.envelope{font-size:100px;animation:bob 2s infinite}
-@keyframes bob{50%{transform:translateY(-9px)}}
-button,.filelabel{border:0;border-radius:999px;padding:13px 24px;margin:8px 5px;background:linear-gradient(135deg,#ff78b4,#df3987);color:white;font-size:1rem;font-weight:bold;cursor:pointer;box-shadow:0 7px 18px #d9368350;display:inline-block}
-.hidden{display:none!important}
-.photo{max-width:100%;max-height:360px;object-fit:contain;border-radius:20px;margin:18px auto;border:6px solid white;box-shadow:0 8px 25px #b83c7840;display:block}
+body{
+ margin:0;min-height:100vh;font-family:Georgia,serif;
+ background:linear-gradient(135deg,#ffe0eb,#fff0f5,#ffc6dc);
+ color:#9b315c;text-align:center;padding:25px 15px;
+}
+.card{
+ max-width:440px;margin:25px auto;background:#ffffffd9;
+ border-radius:25px;padding:25px 18px;
+ box-shadow:0 8px 30px #d77b9b55;
+}
+h1{color:#d3447b;font-size:30px}
+h2{color:#c13d72}
+p{font-size:18px;line-height:1.7}
+button{
+ border:0;border-radius:25px;padding:13px 25px;
+ background:#e85b91;color:white;font-size:16px;
+ margin:12px;cursor:pointer;
+}
+.step{display:none}
+.step.active{display:block}
+#preview{
+ width:100%;max-height:330px;object-fit:cover;
+ border-radius:18px;margin-top:15px;display:none;
+}
+#chooseBox{
+ display:inline-block;background:#e85b91;color:white;
+ padding:12px 22px;border-radius:20px;cursor:pointer;
+ font-family:Arial,sans-serif;font-size:15px;
+}
 #photoInput{display:none}
-.cake{font-size:110px;animation:bob 2s infinite}
-.candles{font-size:40px}
-.progress{height:7px;background:#ffe0ed;border-radius:10px;margin:0 auto 24px;max-width:300px;overflow:hidden}
-#bar{height:100%;background:#ff5fa2;transition:width .4s}
-.hearts{font-size:27px;letter-spacing:8px}
-.message{background:#fff5fa;border:1px dashed #f08ab8;padding:20px;border-radius:18px;margin:18px 0}
-footer{font-size:.8rem;color:#b17a94;margin-top:22px}
+.heart{font-size:40px}
 </style>
 </head>
 <body>
-<div id="sparkles"></div>
-<main><section class="panel">
-<div class="progress"><div id="bar"></div></div>
-<div id="screen"></div>
-<footer>Made with friendship & birthday wishes 💗</footer>
-</section></main>
+
+<div class="card">
+
+ <section class="step active" id="step1">
+  <div class="heart">💌</div>
+  <h1>For Zohaib</h1>
+  <p>A special surprise is waiting for you!</p>
+  <button onclick="nextStep(2)">Open Your Letter</button>
+ </section>
+
+ <section class="step" id="step2">
+  <h1>Dear Zohaib ❤️</h1>
+  <p>Today is your special day. May your life always be filled with happiness, love and beautiful moments.</p>
+  <button onclick="nextStep(3)">Continue</button>
+ </section>
+
+ <section class="step" id="step3">
+  <h2>Choose Your Memory 📸</h2>
+  <p>Select your picture below.</p>
+
+  <label id="chooseBox" for="photoInput">Choose Your File</label>
+  <input type="file" id="photoInput" accept="image/*">
+
+  <img id="preview" alt="Your birthday picture">
+
+  <button onclick="nextStep(4)">Next ❤️</button>
+ </section>
+
+ <section class="step" id="step4">
+  <div class="heart">🎂</div>
+  <h1>Happy Birthday!</h1>
+  <h2>Zohaib 🎉</h2>
+  <p>May every day bring you new happiness, success and beautiful memories.</p>
+  <button onclick="nextStep(5)">Make a Wish</button>
+ </section>
+
+ <section class="step" id="step5">
+  <div class="heart">🎈🎉🎈</div>
+  <h1>Many Happy Returns!</h1>
+  <p>Keep smiling, keep shining and enjoy your special day!</p>
+  <p>With best wishes ❤️</p>
+ </section>
+
+</div>
 
 <script>
-const EMBEDDED_PHOTO = "";
-const BUILD_MODE = true;
-
-const screens = [
-`<div class="envelope">💌</div>
-<p class="small">A little birthday surprise is waiting for you...</p>
-<h1>For Zohaib</h1>
-<p>Someone special deserves a special birthday surprise!</p>
-<button onclick="go(1)">Open Your Letter 💌</button>`,
-
-`<div class="hearts">💗 💖 💗</div>
-<h1>Happy Birthday, Zohaib!</h1>
-<p>Wishing you a day full of smiles, laughter, good memories and all the happiness you deserve.</p>
-<p>May this new year of your life bring you success, peace and wonderful moments.</p>
-<button onclick="go(2)">Next Surprise ✨</button>`,
-
-`<h2>A Birthday Memory 📸</h2>
-<p>One special memory to keep forever.</p>
-<div id="photoArea"></div>
-<div id="uploadTools">
-<label id="chooseLabel" class="filelabel" for="photoInput">Choose Your Photo</label>
-<input id="photoInput" type="file" accept="image/*">
-<p id="uploadHint" class="small">Choose your photo once. The upload option will disappear after selection.</p>
-<button id="downloadBtn" class="hidden" onclick="downloadFinalSite()">Download Final Website ⬇</button>
-</div>
-<button onclick="go(3)">Continue 🎁</button>`,
-
-`<h1>Make a Wish! 🎂</h1>
-<div class="cake">🎂</div>
-<div class="candles">🕯️ 🕯️ 🕯️</div>
-<p>It's your special day, Zohaib! Make a big birthday wish.</p>
-<button onclick="blow()">Blow the Candles ✨</button>
-<div id="cakeDone" class="hidden">
-<h2>Yay! 🎉</h2>
-<p>May all your good wishes come true!</p>
-<button onclick="go(4)">One Last Thing 💗</button>
-</div>`,
-
-`<h2>A Message for You 💌</h2>
-<div class="message">
-<p>Happy Birthday, Zohaib! May your life always be filled with happiness, success, good health and beautiful moments.</p>
-<p>Keep smiling, keep shining, and enjoy your day!</p>
-<p>Wishing you many more amazing years ahead. 🎉</p>
-</div>
-<div class="hearts">💗 💖 💗</div>
-<button onclick="go(0)">Replay Surprise ↻</button>`
-];
-
-let current=0;
-let selectedData=EMBEDDED_PHOTO;
-let photoChosen=!!EMBEDDED_PHOTO;
-
-function go(n){current=n;render()}
-
-function render(){
- document.getElementById('screen').innerHTML=screens[current];
- document.getElementById('bar').style.width=((current+1)/screens.length*100)+'%';
-
- if(current===2){
-  const area=document.getElementById('photoArea');
-
-  if(selectedData){
-   area.innerHTML='<img class="photo" alt="Birthday memory" src="'+selectedData+'">';
-  }else{
-   area.innerHTML='<div class="photo" style="min-height:150px;display:grid;place-items:center;background:#fff0f7">📷 Your photo will appear here</div>';
-  }
-
-  const input=document.getElementById('photoInput');
-
-  if(!BUILD_MODE || photoChosen){
-   document.getElementById('chooseLabel')?.classList.add('hidden');
-   input?.classList.add('hidden');
-   document.getElementById('uploadHint')?.classList.add('hidden');
-   document.getElementById('downloadBtn')?.classList.add('hidden');
-  }
-
-  if(BUILD_MODE && input && !photoChosen){
-   input.addEventListener('change',function(e){
-    const f=e.target.files&&e.target.files[0];
-    if(!f)return;
-
-    const reader=new FileReader();
-    reader.onload=function(ev){
-     selectedData=ev.target.result;
-     photoChosen=true;
-
-     document.getElementById('photoArea').innerHTML=
-     '<img class="photo" alt="Birthday memory" src="'+selectedData+'">';
-
-     document.getElementById('chooseLabel').classList.add('hidden');
-     document.getElementById('photoInput').classList.add('hidden');
-     document.getElementById('uploadHint').classList.add('hidden');
-     document.getElementById('downloadBtn').classList.remove('hidden');
-    };
-    reader.readAsDataURL(f);
-   },{once:true});
-  }
- }
+function nextStep(number){
+ document.querySelectorAll(".step").forEach(s=>{
+  s.classList.remove("active");
+ });
+ document.getElementById("step"+number).classList.add("active");
 }
 
-function blow(){
- document.querySelector('.candles').textContent='✨ 🎉 ✨';
- document.getElementById('cakeDone').classList.remove('hidden');
- confetti();
+const input=document.getElementById("photoInput");
+const preview=document.getElementById("preview");
+const chooseBox=document.getElementById("chooseBox");
+
+const savedPhoto=localStorage.getItem("zohaibBirthdayPhoto");
+if(savedPhoto){
+ preview.src=savedPhoto;
+ preview.style.display="block";
+ chooseBox.style.display="none";
 }
 
-function confetti(){
- for(let i=0;i<35;i++){
-  let e=document.createElement('div');
-  e.textContent=['🎉','💗','✨','🎊'][i%4];
-  e.style.cssText=`position:fixed;left:${Math.random()*100}vw;top:-30px;font-size:24px;z-index:5;pointer-events:none;transition:transform 2.5s,opacity 2.5s`;
-  document.body.appendChild(e);
-  requestAnimationFrame(()=>{
-   e.style.transform=`translateY(${80+Math.random()*100}vh) rotate(${Math.random()*500}deg)`;
-   e.style.opacity=0;
-  });
-  setTimeout(()=>e.remove(),2600);
- }
-}
+input.addEventListener("change",function(){
+ const file=this.files[0];
+ if(!file)return;
 
-function downloadFinalSite(){
- if(!selectedData){
-  alert('Please choose your photo first.');
+ if(!file.type.startsWith("image/")){
+  alert("Please choose an image file.");
   return;
  }
 
- let finalHTML=document.documentElement.outerHTML;
-
- finalHTML=finalHTML.replace(
-  'const EMBEDDED_PHOTO = "";',
-  'const EMBEDDED_PHOTO = '+JSON.stringify(selectedData)+';'
- );
-
- finalHTML=finalHTML.replace(
-  'const BUILD_MODE = true;',
-  'const BUILD_MODE = false;'
- );
-
- finalHTML=finalHTML.replace(
-  /<div id="uploadTools">[\s\S]*?<\/div>/,
-  ''
- );
-
- const blob=new Blob(
-  ['<!DOCTYPE html>\n'+finalHTML],
-  {type:'text/html;charset=utf-8'}
- );
-
- const a=document.createElement('a');
- a.href=URL.createObjectURL(blob);
- a.download='index.html';
- document.body.appendChild(a);
- a.click();
- a.remove();
-
- setTimeout(()=>URL.revokeObjectURL(a.href),3000);
-
- document.getElementById('downloadBtn').classList.add('hidden');
-
- alert('Final website downloaded! Your photo is saved and upload/download options are removed.');
-}
-
-function makeFloat(){
- const e=document.createElement('div');
- e.className='float';
- e.textContent=['💗','💕','✨','🌸'][Math.floor(Math.random()*4)];
- e.style.left=Math.random()*100+'%';
- e.style.animationDuration=(7+Math.random()*8)+'s';
- e.style.fontSize=(16+Math.random()*20)+'px';
- document.getElementById('sparkles').appendChild(e);
- setTimeout(()=>e.remove(),16000);
-}
-
-setInterval(makeFloat,650);
-render();
+ const reader=new FileReader();
+ reader.onload=function(){
+  preview.src=reader.result;
+  preview.style.display="block";
+  chooseBox.style.display="none";
+  localStorage.setItem("zohaibBirthdayPhoto",reader.result);
+ };
+ reader.readAsDataURL(file);
+});
 </script>
+
 </body>
 </html>
