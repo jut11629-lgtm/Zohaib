@@ -7,39 +7,21 @@
 <title>Happy Birthday Zohaib</title>
 <style>
 *{box-sizing:border-box}
-body{
- margin:0;min-height:100vh;
- font-family:Georgia,serif;color:#71304f;
- background:radial-gradient(circle at 15% 10%,#fff,#ffe5f1 40%,#ffc8e0);
- overflow-x:hidden
-}
+body{margin:0;min-height:100vh;font-family:Georgia,serif;color:#71304f;background:radial-gradient(circle at 15% 10%,#fff,#ffe5f1 40%,#ffc8e0);overflow-x:hidden}
 #sparkles{position:fixed;inset:0;pointer-events:none;overflow:hidden}
 .float{position:absolute;bottom:-40px;animation:rise linear infinite;opacity:.7}
 @keyframes rise{to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
 main{position:relative;max-width:760px;margin:auto;padding:24px 16px;min-height:100vh;display:flex;align-items:center;justify-content:center}
-.panel{
- width:100%;background:#ffffffdf;border:1px solid white;
- box-shadow:0 18px 55px #b83c7850;border-radius:28px;
- padding:clamp(22px,5vw,44px);text-align:center
-}
+.panel{width:100%;background:#ffffffdf;border:1px solid white;box-shadow:0 18px 55px #b83c7850;border-radius:28px;padding:clamp(22px,5vw,44px);text-align:center}
 h1{font-size:clamp(2rem,7vw,3.6rem);color:#d93683;text-shadow:0 3px #ffd5e8}
 h2{color:#d93683}
 p{font-size:1.15rem;line-height:1.65}
 .small{font-size:.95rem;color:#9b6680}
 .envelope{font-size:100px;animation:bob 2s infinite}
 @keyframes bob{50%{transform:translateY(-9px)}}
-button,.filelabel{
- border:0;border-radius:999px;padding:13px 24px;margin:8px 5px;
- background:linear-gradient(135deg,#ff78b4,#df3987);
- color:white;font-size:1rem;font-weight:bold;cursor:pointer;
- box-shadow:0 7px 18px #d9368350;display:inline-block
-}
+button,.filelabel{border:0;border-radius:999px;padding:13px 24px;margin:8px 5px;background:linear-gradient(135deg,#ff78b4,#df3987);color:white;font-size:1rem;font-weight:bold;cursor:pointer;box-shadow:0 7px 18px #d9368350;display:inline-block}
 .hidden{display:none!important}
-.photo{
- max-width:100%;max-height:360px;object-fit:contain;
- border-radius:20px;margin:18px auto;border:6px solid white;
- box-shadow:0 8px 25px #b83c7840;display:block
-}
+.photo{max-width:100%;max-height:360px;object-fit:contain;border-radius:20px;margin:18px auto;border:6px solid white;box-shadow:0 8px 25px #b83c7840;display:block}
 #photoInput{display:none}
 .cake{font-size:110px;animation:bob 2s infinite}
 .candles{font-size:40px}
@@ -52,16 +34,13 @@ footer{font-size:.8rem;color:#b17a94;margin-top:22px}
 </head>
 <body>
 <div id="sparkles"></div>
-<main>
-<section class="panel">
+<main><section class="panel">
 <div class="progress"><div id="bar"></div></div>
 <div id="screen"></div>
 <footer>Made with friendship & birthday wishes 💗</footer>
-</section>
-</main>
+</section></main>
 
 <script>
-/* Photo gets embedded in the final downloaded website */
 const EMBEDDED_PHOTO = "";
 const BUILD_MODE = true;
 
@@ -82,10 +61,10 @@ const screens = [
 <p>One special memory to keep forever.</p>
 <div id="photoArea"></div>
 <div id="uploadTools">
-<label class="filelabel" for="photoInput">Choose Your Photo</label>
+<label id="chooseLabel" class="filelabel" for="photoInput">Choose Your Photo</label>
 <input id="photoInput" type="file" accept="image/*">
-<p class="small">Choose your photo once, then download the finished website. Your final website will not show this upload option again.</p>
-<button onclick="downloadFinalSite()">Download Final Website ⬇</button>
+<p id="uploadHint" class="small">Choose your photo once. The upload option will disappear after selection.</p>
+<button id="downloadBtn" class="hidden" onclick="downloadFinalSite()">Download Final Website ⬇</button>
 </div>
 <button onclick="go(3)">Continue 🎁</button>`,
 
@@ -112,11 +91,9 @@ const screens = [
 
 let current=0;
 let selectedData=EMBEDDED_PHOTO;
+let photoChosen=!!EMBEDDED_PHOTO;
 
-function go(n){
- current=n;
- render();
-}
+function go(n){current=n;render()}
 
 function render(){
  document.getElementById('screen').innerHTML=screens[current];
@@ -133,19 +110,33 @@ function render(){
 
   const input=document.getElementById('photoInput');
 
-  if(BUILD_MODE && input){
+  if(!BUILD_MODE || photoChosen){
+   document.getElementById('chooseLabel')?.classList.add('hidden');
+   input?.classList.add('hidden');
+   document.getElementById('uploadHint')?.classList.add('hidden');
+   document.getElementById('downloadBtn')?.classList.add('hidden');
+  }
+
+  if(BUILD_MODE && input && !photoChosen){
    input.addEventListener('change',function(e){
-    const f=e.target.files && e.target.files[0];
+    const f=e.target.files&&e.target.files[0];
     if(!f)return;
 
     const reader=new FileReader();
     reader.onload=function(ev){
      selectedData=ev.target.result;
+     photoChosen=true;
+
      document.getElementById('photoArea').innerHTML=
      '<img class="photo" alt="Birthday memory" src="'+selectedData+'">';
+
+     document.getElementById('chooseLabel').classList.add('hidden');
+     document.getElementById('photoInput').classList.add('hidden');
+     document.getElementById('uploadHint').classList.add('hidden');
+     document.getElementById('downloadBtn').classList.remove('hidden');
     };
     reader.readAsDataURL(f);
-   });
+   },{once:true});
   }
  }
 }
@@ -189,12 +180,7 @@ function downloadFinalSite(){
  );
 
  finalHTML=finalHTML.replace(
-  '<div id="uploadTools">\n<label class="filelabel" for="photoInput">Choose Your Photo</label>\n<input id="photoInput" type="file" accept="image/*">\n<p class="small">Choose your photo once, then download the finished website. Your final website will not show this upload option again.</p>\n<button onclick="downloadFinalSite()">Download Final Website ⬇</button>\n</div>',
-  ''
- );
-
- finalHTML=finalHTML.replace(
-  '<input id="photoInput" type="file" accept="image/*">',
+  /<div id="uploadTools">[\s\S]*?<\/div>/,
   ''
  );
 
@@ -211,7 +197,10 @@ function downloadFinalSite(){
  a.remove();
 
  setTimeout(()=>URL.revokeObjectURL(a.href),3000);
- alert('Final website downloaded! Upload this index.html to GitHub. Your photo is already saved inside it.');
+
+ document.getElementById('downloadBtn').classList.add('hidden');
+
+ alert('Final website downloaded! Your photo is saved and upload/download options are removed.');
 }
 
 function makeFloat(){
