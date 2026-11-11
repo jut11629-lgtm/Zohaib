@@ -3,100 +3,136 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Happy Birthday Zohaib 💜</title>
 <style>
 *{box-sizing:border-box}
 body{
  margin:0;min-height:100vh;text-align:center;
- font-family:Arial,sans-serif;color:#fff;
- background:radial-gradient(circle at top,#51208c,#190d36 55%,#09051c);
- overflow-x:hidden
+ font-family:Arial,sans-serif;color:white;
+ background:radial-gradient(circle at top,#7025a5,#24103f 60%,#09051c);
 }
-.container{max-width:750px;margin:auto;padding:25px 18px}
-.stars{font-size:40px;letter-spacing:12px;margin-top:25px}
-h1{font-size:clamp(34px,8vw,55px);color:#f1c5ff;
- text-shadow:0 0 12px #d36aff,0 0 28px #a83dff}
-h2{color:#e5b5ff}
+main{max-width:650px;margin:auto;padding:25px 18px}
+h1{color:#f0c5ff;text-shadow:0 0 15px #d36aff;font-size:38px}
+h2{color:#e6b5ff}
 p{font-size:18px;line-height:1.7}
-.card{
- margin:22px auto;padding:25px;border-radius:25px;
- background:#ffffff12;border:1px solid #d18aff;
- box-shadow:0 0 25px #a83dff66
+.panel{
+ margin:22px auto;padding:25px 18px;
+ border:1px solid #d18aff;border-radius:25px;
+ background:#ffffff10;box-shadow:0 0 25px #b64dff55;
 }
+button{
+ border:0;border-radius:30px;padding:14px 25px;
+ margin:12px;background:linear-gradient(120deg,#a93bea,#ed62cf);
+ color:white;font-size:17px;font-weight:bold;cursor:pointer;
+ box-shadow:0 0 15px #bc55ff;
+}
+button:active{transform:scale(.96)}
+.step{display:none;animation:appear .8s ease}
+#one{display:block}
+@keyframes appear{
+ from{opacity:0;transform:translateY(20px)}
+ to{opacity:1;transform:translateY(0)}
+}
+.envelope{font-size:100px;cursor:pointer;filter:drop-shadow(0 0 15px #d16aff)}
 .photo{
- width:220px;height:220px;margin:18px auto;
- border-radius:25px;overflow:hidden;
- border:4px solid #e1a4ff;
- box-shadow:0 0 25px #b64dff;
+ width:220px;height:220px;margin:20px auto;
+ border:4px solid #e1a4ff;border-radius:25px;overflow:hidden;
  background:#281343;display:flex;align-items:center;
- justify-content:center;color:#f2caff
+ justify-content:center;color:#f2caff;
+ box-shadow:0 0 22px #b64dff;
 }
 .photo img{width:100%;height:100%;object-fit:cover}
-button{
- padding:15px 28px;border:0;border-radius:30px;
- color:white;background:linear-gradient(120deg,#9b35df,#ed62cf);
- font-size:17px;font-weight:bold;cursor:pointer;
- box-shadow:0 0 20px #c64bff;margin:12px
-}
-#surprise{display:none;animation:appear 1s ease}
-@keyframes appear{
- from{opacity:0;transform:scale(.9)}
- to{opacity:1;transform:scale(1)}
-}
-.gift{font-size:60px;animation:float 1.5s infinite alternate}
-@keyframes float{to{transform:translateY(-12px)}}
-footer{padding:25px;color:#dcb1ff}
+.cake{font-size:100px;transition:.5s}
+.cut{transform:rotate(-12deg) scale(1.1)}
+.small{font-size:14px;color:#dcb1ff}
 </style>
 </head>
 <body>
-<div class="container">
- <div class="stars">✨ 💜 ✨</div>
- <h1>Happy Birthday Zohaib</h1>
- <h2>A Surprise Made Just For You</h2>
+<main>
+ <div style="font-size:38px;margin-top:15px">💜 ✨ 💜</div>
 
- <div class="card">
-  <div class="photo">
-   <img src="photo.jpg" alt="Zohaib Picture"
-   onerror="this.style.display='none';this.parentElement.innerHTML='Your Photo Here 📷'">
+ <section class="step" id="one">
+  <div class="panel">
+   <h1>A Little Surprise</h1>
+   <p>Someone has something special waiting for you...</p>
+   <div class="envelope" onclick="showStep(2)">💌</div>
+   <p>Tap to open your letter</p>
+   <button onclick="showStep(2)">Open Envelope 💌</button>
   </div>
-  <p>A special day deserves a special surprise! 💫</p>
-  <button onclick="openSurprise()">🎁 Open Surprise</button>
- </div>
+ </section>
 
- <div id="surprise">
-  <div class="gift">🎂🎉💜</div>
-  <h1>Surprise!</h1>
-  <h2>Happy Birthday Zohaib ❤️</h2>
-  <div class="card">
-   <p>
-    May your life always be filled with happiness,
-    love and beautiful moments.
-   </p>
-   <p>
-    May every new day bring new opportunities,
-    success and countless reasons to smile.
-   </p>
-   <h2>Stay Blessed & Keep Shining! ✨</h2>
+ <section class="step" id="two">
+  <div class="panel">
+   <h1>Dear Zohaib ❤️</h1>
+   <p>Today is all about you! A special day
+   deserves a special surprise.</p>
+   <p>May your life always be filled with happiness,
+   love and beautiful moments.</p>
+   <button onclick="showStep(3)">Continue 💜</button>
   </div>
-  <div style="font-size:35px">💜 🎊 🎈 💜</div>
- </div>
- <footer>Designed with Love ❤️</footer>
-</div>
+ </section>
+
+ <section class="step" id="three">
+  <div class="panel">
+   <h1>A Special Memory ✨</h1>
+   <div class="photo">
+    <img src="photo.jpg" alt="Your picture"
+    onerror="this.style.display='none';this.parentElement.innerHTML='📷 Your Photo Here'">
+   </div>
+   <p>This moment is just for you!</p>
+   <button onclick="startSurprise()">Open Surprise 🎁</button>
+  </div>
+ </section>
+
+ <section class="step" id="four">
+  <div class="panel">
+   <div style="font-size:65px">🎉🎊💜</div>
+   <h1>HAPPY BIRTHDAY!</h1>
+   <h2>Dear Zohaib ❤️</h2>
+   <p>May every new day bring happiness,
+   success and countless reasons to smile.</p>
+   <p>Keep shining and keep achieving your dreams!</p>
+   <button onclick="showStep(5)">Next: Cake Time 🎂</button>
+  </div>
+ </section>
+
+ <section class="step" id="five">
+  <div class="panel">
+   <h1>Make A Wish! 🎂</h1>
+   <div class="cake" id="cake">🎂</div>
+   <p id="cakeText">It's your special day!</p>
+   <button onclick="cutCake()">Cut The Cake 🔪</button>
+   <div id="final" style="display:none">
+    <h1>Lots of Love! 💜</h1>
+    <p>Stay blessed and keep smiling always.</p>
+    <div style="font-size:40px">🎈🎁🎊</div>
+   </div>
+  </div>
+ </section>
+
+ <p class="small">Made with love ❤️ Just for you</p>
+</main>
 
 <script>
-function openSurprise(){
- document.getElementById("surprise").style.display="block";
- document.querySelector("button").style.display="none";
- const music=document.createElement("iframe");
- music.width="1";music.height="1";
- music.style.position="absolute";
- music.style.left="-9999px";
- music.src="https://www.youtube.com/embed/CF1vezYi7rA?autoplay=1";
- music.allow="autoplay; encrypted-media";
- music.title="Birthday Song";
- document.body.appendChild(music);
+function showStep(n){
+ document.querySelectorAll(".step").forEach(s=>s.style.display="none");
+ document.getElementById(["","one","two","three","four","five"][n]).style.display="block";
+ window.scrollTo(0,0);
+}
+function startSurprise(){
+ showStep(4);
+ document.getElementById("music").src=
+ "https://www.youtube.com/embed/CF1vezYi7rA?autoplay=1";
+}
+function cutCake(){
+ document.getElementById("cake").classList.add("cut");
+ document.getElementById("cakeText").textContent="Happy Birthday! 🎉";
+ document.getElementById("final").style.display="block";
 }
 </script>
+<iframe id="music" width="1" height="1"
+ style="position:absolute;left:-9999px"
+ allow="autoplay; encrypted-media"></iframe>
 </body>
 </html>
