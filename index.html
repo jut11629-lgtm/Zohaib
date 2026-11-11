@@ -1,1 +1,233 @@
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Zohaib 💜</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:radial-gradient(circle at top,#42116b,#160624 65%,#05020c);
+ color:white;
+ text-align:center;
+ min-height:100vh;
+ overflow-x:hidden;
+}
+.glow{
+ color:#e4a5ff;
+ text-shadow:0 0 8px #c45aff,0 0 20px #a000ff,0 0 40px #8500ff;
+}
+header{padding:30px 15px 10px}
+h1{font-size:34px}
+p{line-height:1.8;color:#ead8fa}
+.card{
+ width:90%;max-width:520px;
+ margin:25px auto;
+ padding:30px 20px;
+ border:1px solid #c56aff;
+ border-radius:22px;
+ background:#210c38e8;
+ box-shadow:0 0 20px #9b36ff66,inset 0 0 15px #a33aff22;
+}
+button{
+ background:linear-gradient(100deg,#9b32ff,#e04cff);
+ color:white;border:0;
+ padding:14px 24px;
+ border-radius:30px;
+ font-size:16px;
+ font-weight:bold;
+ margin:12px 5px;
+ cursor:pointer;
+ box-shadow:0 0 18px #bb48ff88;
+}
+button:active{transform:scale(.96)}
+.page{display:none;animation:appear .8s}
+.page.active{display:block}
+@keyframes appear{
+ from{opacity:0;transform:translateY(20px)}
+ to{opacity:1;transform:translateY(0)}
+}
+.envelope{
+ font-size:100px;
+ animation:float 2s infinite ease-in-out;
+}
+@keyframes float{
+ 50%{transform:translateY(-13px)}
+}
+.cake{font-size:100px;margin:20px}
+.photo{
+ width:100%;max-height:260px;
+ object-fit:cover;
+ border-radius:15px;
+ margin-top:15px;
+ box-shadow:0 0 20px #bb54ff77;
+}
+.star{
+ position:fixed;
+ pointer-events:none;
+ color:#e9b5ff;
+ animation:fall 5s linear infinite;
+ z-index:0;
+}
+@keyframes fall{
+ from{transform:translateY(-10vh) rotate(0)}
+ to{transform:translateY(110vh) rotate(360deg)}
+}
+.card,.page,header{position:relative;z-index:1}
+footer{padding:30px;color:#c9a6e8}
+input{max-width:100%;margin:12px;color:white}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1 class="glow">💜 Happy Birthday Zohaib 💜</h1>
+<p>A Special Surprise Is Waiting For You! ✨</p>
+</header>
+
+<!-- PAGE 1 -->
+<section class="page active" id="page1">
+<div class="card">
+<div class="envelope">💌</div>
+<h2 class="glow">Hey Zohaib!</h2>
+<p>Someone has prepared a special surprise for you...</p>
+<p>Are you ready? 🎁</p>
+<button onclick="showPage(2)">Open Your Surprise 💜</button>
+</div>
+</section>
+
+<!-- PAGE 2 -->
+<section class="page" id="page2">
+<div class="card">
+<h1 class="glow">🎉 It's Your Special Day! 🎉</h1>
+<div style="font-size:65px">🎊🎈🎊</div>
+<h2>Happy Birthday Zohaib!</h2>
+<p>
+Wishing you a day full of happiness, laughter,
+beautiful memories and endless blessings.
+May every new day bring you success and joy.
+</p>
+<p class="glow">Keep Shining, Keep Smiling! ✨</p>
+<button onclick="showPage(3)">Next Surprise ➜</button>
+</div>
+</section>
+
+<!-- PAGE 3 -->
+<section class="page" id="page3">
+<div class="card">
+<h1 class="glow">🎂 Birthday Cake 🎂</h1>
+<div class="cake" id="cake">🎂</div>
+<p id="cakeText">Make a birthday wish, Zohaib! 🌟</p>
+<button onclick="blowCandles()">Blow The Candles 🕯️</button>
+<button onclick="showPage(4)">Next ➜</button>
+</div>
+</section>
+
+<!-- PAGE 4 -->
+<section class="page" id="page4">
+<div class="card">
+<h1 class="glow">📸 Memory Corner</h1>
+<p>Add your favourite pictures with Zohaib here!</p>
+<input type="file" id="photos" accept="image/*" multiple>
+<div id="gallery"></div>
+<button onclick="showPage(5)">One More Surprise ➜</button>
+</div>
+</section>
+
+<!-- PAGE 5 -->
+<section class="page" id="page5">
+<div class="card">
+<h1 class="glow">🎁 A Special Message</h1>
+<div style="font-size:65px">💜✨💜</div>
+<p>
+Dear Zohaib,<br><br>
+May your life always be filled with happiness,
+success, friendship and beautiful moments.
+May you achieve everything you work hard for.
+<br><br>
+Stay blessed and enjoy your special day!
+</p>
+<h2 class="glow">Happy Birthday Once Again! 🥳</h2>
+<button onclick="showPage(6)">Final Surprise 💫</button>
+</div>
+</section>
+
+<!-- PAGE 6 -->
+<section class="page" id="page6">
+<div class="card">
+<div style="font-size:80px">👑</div>
+<h1 class="glow">You're Awesome, Zohaib!</h1>
+<p>Never stop smiling. Your best moments are still ahead! 💜</p>
+<h2>🎉 HAPPY BIRTHDAY 🎉</h2>
+<button onclick="showPage(1)">Replay Surprise 🔄</button>
+</div>
+</section>
+
+<footer>Made with 💜 for Zohaib</footer>
+
+<script>
+function showPage(number){
+ document.querySelectorAll('.page').forEach(p=>{
+  p.classList.remove('active');
+ });
+ document.getElementById('page'+number).classList.add('active');
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function blowCandles(){
+ document.getElementById('cake').innerText='🎂✨';
+ document.getElementById('cakeText').innerText=
+ 'Wish made! May all your dreams come true, Zohaib! 💜';
+ confetti();
+}
+
+function confetti(){
+ for(let i=0;i<45;i++){
+  let s=document.createElement('div');
+  s.innerText=['💜','✨','🎉','💫'][Math.floor(Math.random()*4)];
+  s.style.position='fixed';
+  s.style.left=Math.random()*100+'vw';
+  s.style.top='-20px';
+  s.style.fontSize=(15+Math.random()*20)+'px';
+  s.style.zIndex='10';
+  s.style.transition='transform 3s linear,opacity 3s';
+  document.body.appendChild(s);
+  setTimeout(()=>{
+   s.style.transform='translateY(110vh) rotate(500deg)';
+   s.style.opacity='0';
+  },50);
+  setTimeout(()=>s.remove(),3200);
+ }
+}
+
+document.getElementById('photos').addEventListener('change',function(e){
+ const gallery=document.getElementById('gallery');
+ gallery.innerHTML='';
+ [...e.target.files].forEach(file=>{
+  const img=document.createElement('img');
+  img.className='photo';
+  img.src=URL.createObjectURL(file);
+  gallery.appendChild(img);
+ });
+});
+
+setInterval(()=>{
+ let star=document.createElement('div');
+ star.className='star';
+ star.innerText=['✦','✨','💜','★'][Math.floor(Math.random()*4)];
+ star.style.left=Math.random()*100+'vw';
+ star.style.fontSize=(12+Math.random()*20)+'px';
+ star.style.animationDuration=(3+Math.random()*5)+'s';
+ document.body.appendChild(star);
+ setTimeout(()=>star.remove(),8000);
+},400);
+</script>
+
+</body>
+</html>
